@@ -8,7 +8,6 @@ $az = "ap-south-1a"
 $volume_size = 1
 $volume_type = "gp2"
 
-
 aws ec2 create-key-pair --key-name "$key_name" --query 'KeyMaterial' --output text | out-file -encoding ascii -filepath "$key_name.pem"
 
 $sg_id = aws ec2 create-security-group --group-name "$sg_name" --description "Security group allowing SSH" |  jq ".GroupId"
@@ -19,6 +18,6 @@ $instance_id = aws ec2 run-instances --image-id "$image_id" --instance-type "$in
 
 $volume_id = aws ec2 create-volume --availability-zone "$az" --size "$volume_size" --volume-type "$volume_type" | jq ".VolumeId"
 
-Start-Sleep 15
+Start-Sleep 20
 
 aws ec2 attach-volume --volume-id "$volume_id" --instance-id "$instance_id" --device /dev/xvdh
