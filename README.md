@@ -5,6 +5,7 @@
 ### Problem Statement :
 
 #### Provision these resources using AWS CLI :
+
 1. Create a key pair.
 2. Create a security group.
 3. Launch an instance using the above created key pair and security group.
